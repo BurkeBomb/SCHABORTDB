@@ -1,5 +1,18 @@
 # Schabort Follow-ups — Technical Handover & Spec
 
+## Table of Contents
+
+- [1. Overview](#1-overview)
+- [2. Environment Setup](#2-environment-setup)
+- [3. Database Schema & RLS Policies](#3-database-schema--rls-policies)
+- [4. Import Specifications](#4-import-specifications)
+  - [4.1 Clients Import (CSV)](#41-clients-import-csv)
+  - [4.2 Follow-ups Import (CSV)](#42-follow-ups-import-csv)
+  - [4.3 Age Analysis Import (CSV)](#43-age-analysis-import-csv)
+- [5. UI Overview](#5-ui-overview)
+- [6. Troubleshooting](#6-troubleshooting)
+- [7. Next Steps / Improvements](#7-next-steps--improvements)
+
 ## 1. Overview
 
 **Goal:** A multi-tenant follow‑up tracking system using Next.js and Supabase. It supports adding clients and follow‑ups, importing clients/follow‑ups from CSV (including age‑analysis CSVs), and enforces strict per‑organisation data separation with row‑level security (RLS).
