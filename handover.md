@@ -99,13 +99,16 @@ create table if not exists clients(
 create table if not exists followups(
   id bigserial primary key,
   client_id bigint not null references clients(id) on delete cascade,
-  owner_id uuid not null references profiles(id) on delete set null,
+  owner_id uuid references profiles(id) on delete set null,
   summary text not null,
   content text,
   status text not null default 'open' check (status in ('open','done')),
   due_date date,
   created_at timestamptz not null default now()
 );
+
+-- `owner_id` intentionally allows NULL so that the `on delete set null` clause
+-- can succeed if a profile is removed while the follow-up remains.
 
 create index if not exists clients_name_trgm_idx on clients using gin (name gin_trgm_ops);
 create unique index if not exists clients_org_prefix_uniq on clients(org_id, prefix) where prefix is not null;
